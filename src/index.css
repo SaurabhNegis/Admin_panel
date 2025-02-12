@@ -10,10 +10,8 @@ body,
   font-family: "Source Sans 3", sans-serif;
 }
 
-
 .app {
   display: flex;
-  flex-direction: column;
   position: relative;
 }
 
