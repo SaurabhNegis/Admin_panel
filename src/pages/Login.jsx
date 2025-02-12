@@ -1,93 +1,52 @@
-// src/pages/Login.jsx
-
-import React, { useState } from 'react';
+import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, TextField, Box, Typography, CircularProgress } from '@mui/material';
+import { AppProvider } from '@toolpad/core/AppProvider';
+import { SignInPage } from '@toolpad/core/SignInPage';
+import { useTheme } from '@mui/material/styles';
 
-// Mock login function (replace this with actual API logic)
-const mockLogin = (username, password) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (username === 'admin' && password === 'password') {
-        resolve({ token: 'mock-token' });
-      } else {
-        reject('Invalid credentials');
-      }
-    }, 1000);
-  });
+// preview-start
+// preview-start
+const BRANDING = {
+
+  title: 'Admin Dashboard',
 };
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+const providers = [{ id: 'credentials', name: 'Email and Password' }];
+// preview-end
+
+const signIn = async (provider, formData) => {
+  // Removed alert to skip the popup
+  const promise = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 200);
+  });
+  return promise;
+};
+
+export default function CredentialsSignInPage() {
+  const theme = useTheme();
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+  // Temporary email and password values
+  const temporaryEmail = 'user@example.com';
+  const temporaryPassword = 'password123';
 
-    try {
-      const response = await mockLogin(username, password); // Replace with actual API call
-      // Save the authentication token (e.g., in localStorage)
-      localStorage.setItem('authToken', response.token);
-      
-      // Redirect to the dashboard after successful login
-      navigate('/');
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
+  // Redirect to homepage after signing in
+  const handleSignIn = async (provider, formData) => {
+    await signIn(provider, formData);
+    navigate('/');
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: 'auto', padding: '50px' }}>
-      <Typography variant="h4" gutterBottom>
-        Admin Panel Login
-      </Typography>
-      
-      <form onSubmit={handleLogin}>
-        {/* Username */}
-        <TextField
-          label="Username"
-          variant="outlined"
-          fullWidth
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          margin="normal"
-        />
-
-        {/* Password */}
-        <TextField
-          label="Password"
-          variant="outlined"
-          type="password"
-          fullWidth
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          margin="normal"
-        />
-
-        {/* Error Message */}
-        {error && <Typography color="error" variant="body2" gutterBottom>{error}</Typography>}
-
-        {/* Login Button */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? <CircularProgress size={24} /> : 'Login'}
-          </Button>
-        </Box>
-      </form>
-    </div>
+    // preview-start
+    <AppProvider branding={BRANDING} theme={theme}>
+      <SignInPage
+        signIn={handleSignIn}
+        providers={providers}
+ 
+      />
+    </AppProvider>
+    // preview-end
   );
-};
-
-export default Login;
+}
