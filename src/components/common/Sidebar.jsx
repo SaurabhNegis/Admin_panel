@@ -19,7 +19,7 @@ const Sidebars = () => {
         {/* Header section of the sidebar containing the title and a toggle button */}
         <Box sx={{ display: 'flex', justifyContent: "space-between", padding: '20px' }}>
           {/* Typography component to display the sidebar title */}
-          <Typography variant="h6" className="text-center py-4 text-white font-bold">
+          <Typography variant="h6" >
             Admin Panel
           </Typography>
           {/* IconButton component wrapping the MenuOutlinedIcon for  toggle functionality */}
@@ -31,15 +31,15 @@ const Sidebars = () => {
         {/* Menu container to hold the individual menu items */}
         <Menu iconShape="square">
           {/* MenuItem for Dashboard with an icon and a link to the home page */}
-          <MenuItem icon={<Dashboard />} component={<Link to="/" />}>
+          <MenuItem icon={<Dashboard />} component={<Link to={"/"}/>}>
             Dashboard
           </MenuItem>
           {/* MenuItem for Settings with an icon and a link to the settings page */}
-          <MenuItem icon={<Settings />} component={<Link to="/settings" />}>
+          <MenuItem icon={<Settings />} component={<Link to={"/settings"} />}>
             Settings
           </MenuItem>
           {/* MenuItem for Logout with an icon and a link to the logout page */}
-          <MenuItem icon={<Logout />} component={<Link to="/logout" />}>
+          <MenuItem icon={<Logout />} component={<Link to={"/logout"} />}>
             Logout
           </MenuItem>
         </Menu>
