@@ -1,10 +1,12 @@
 import React from 'react';
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import { Box, Typography, IconButton } from '@mui/material';
 import { Dashboard, Settings, Logout } from '@mui/icons-material';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DynamicFormIcon from '@mui/icons-material/DynamicForm';
+import TableChartIcon from '@mui/icons-material/TableChart';
+
 const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
   const location = useLocation(); // Getting the current location for sidebar menuitem 
 
@@ -72,6 +74,15 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
           >
             {!isCollapsed && 'Form'}
           </MenuItem>
+
+          {/* Tabel */}
+          <SubMenu icon={<TableChartIcon/>} 
+          label="Charts">
+      <MenuItem icon={<TableChartIcon />}
+            component={<Link to={"/basicTables"} />}
+      >basic Table</MenuItem>
+      <MenuItem>Data Table </MenuItem>
+    </SubMenu>
 
           {/* Logout MenuItem */}
           <MenuItem

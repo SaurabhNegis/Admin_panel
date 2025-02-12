@@ -7,8 +7,10 @@ import Users from '../pages/Users';
 import Settings from '../pages/Settings';
 import Login from '../pages/Login';
 import Logout from '../pages/Logout';
+import FormPage from '../pages/FormPage';
 // import NotFound from '../pages/NotFound';
 import MainLayout from '../layout/MainLayout';
+import BasicTables from '../pages/Tables/BasicTables';
 
 const AppRoutes = () => (
   <Routes>
@@ -20,12 +22,19 @@ const AppRoutes = () => (
     <Route path="/" element={<MainLayout />}>
       {/* Default route (Dashboard) when visiting "/" */}
       <Route index element={<Dashboard />} />
-
+      
       {/* Route for Users page */}
       <Route path="users" element={<Users />} />
 
       {/* Route for Settings page */}
       <Route path="settings" element={<Settings />} />
+
+      {/* Route for FormPage page */}
+
+      <Route path="formPage" element={<FormPage />} />
+      <Route path="basicTables" element={<BasicTables />} />
+
+      
     </Route>
 
     {/* Uncomment this to handle unknown routes with a NotFound page */}
