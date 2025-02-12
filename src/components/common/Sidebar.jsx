@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import { Box, Typography, IconButton } from '@mui/material';
 import { Dashboard, Settings, Logout } from '@mui/icons-material';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-
+import DynamicFormIcon from '@mui/icons-material/DynamicForm';
 const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
   const location = useLocation(); // Getting the current location for sidebar menuitem 
 
@@ -61,6 +61,16 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
             active={location.pathname === "/settings"} // Check if the current route matches
           >
             {!isCollapsed && 'Settings'}
+          </MenuItem>
+
+
+          {/* formPage MenuItem */}
+          <MenuItem
+            icon={<DynamicFormIcon />}
+            component={<Link to={"/formPage"} />}
+            active={location.pathname === "/formPage"} // Check if the current route matches
+          >
+            {!isCollapsed && 'Form'}
           </MenuItem>
 
           {/* Logout MenuItem */}
