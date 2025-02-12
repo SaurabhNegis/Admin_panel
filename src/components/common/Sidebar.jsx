@@ -34,7 +34,7 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
                   backgroundColor: '#1976d2',
                   color: '#fff', // Custom text color for active item
                   '&:hover': {
-                    borderBottom: '#1565c0', // Custom hover background color
+                    backgroundColor: '#1976d2', // Custom hover background color
                   },
                   
                 };

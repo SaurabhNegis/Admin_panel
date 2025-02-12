@@ -17,7 +17,12 @@ const Settings = () => {
 
   return (
     <div>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom sx={{
+    marginBottom: 5, 
+    borderBottom: '2px solid', 
+    borderColor: 'primary.main', 
+    paddingBottom: 1
+  }}>
         Settings
       </Typography>
       
