@@ -10,20 +10,26 @@ import { Dashboard, Settings, Logout } from '@mui/icons-material';
 // Import a specific icon for the sidebar toggle button
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
-const Sidebars = () => {
+const Sidebars = ({ isCollapsed, setIsCollapsed }) => {  
+  // Function to toggle the collapsed state based on the parent's `isCollapsed` value
+  const handleToggle = () => {
+    setIsCollapsed(!isCollapsed);  // Toggle collapsed state by updating the parent state
+  };
+
   return (
-    // Use a Box component as the outer container with hidden overflow and full width
     <Box sx={{ overflow: "hidden", width: "100%" }}>
       {/* Sidebar component from react-pro-sidebar with a fixed full viewport height */}
-      <Sidebar collapsed={false} style={{ height: '100vh' }}>
+      <Sidebar collapsed={isCollapsed} style={{ height: '100vh' }}>
         {/* Header section of the sidebar containing the title and a toggle button */}
         <Box sx={{ display: 'flex', justifyContent: "space-between", padding: '20px' }}>
-          {/* Typography component to display the sidebar title */}
-          <Typography variant="h6" >
-            Admin Panel
-          </Typography>
-          {/* IconButton component wrapping the MenuOutlinedIcon for  toggle functionality */}
-          <IconButton>
+          {/* Typography component to display the sidebar title, only shown when expanded */}
+          {!isCollapsed && (
+            <Typography variant="h6">
+              Admin Panel
+            </Typography>
+          )}
+          {/* IconButton component wrapping the MenuOutlinedIcon for toggle functionality */}
+          <IconButton onClick={handleToggle}>
             <MenuOutlinedIcon />
           </IconButton>
         </Box>
@@ -31,16 +37,16 @@ const Sidebars = () => {
         {/* Menu container to hold the individual menu items */}
         <Menu iconShape="square">
           {/* MenuItem for Dashboard with an icon and a link to the home page */}
-          <MenuItem icon={<Dashboard />} component={<Link to={"/"}/>}>
-            Dashboard
+          <MenuItem icon={<Dashboard />} component={<Link to={"/"} />}>
+            {!isCollapsed && 'Dashboard'}
           </MenuItem>
           {/* MenuItem for Settings with an icon and a link to the settings page */}
           <MenuItem icon={<Settings />} component={<Link to={"/settings"} />}>
-            Settings
+            {!isCollapsed && 'Settings'}
           </MenuItem>
           {/* MenuItem for Logout with an icon and a link to the logout page */}
           <MenuItem icon={<Logout />} component={<Link to={"/logout"} />}>
-            Logout
+            {!isCollapsed && 'Logout'}
           </MenuItem>
         </Menu>
       </Sidebar>

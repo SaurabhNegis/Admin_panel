@@ -5,6 +5,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined"; // Import MenuOutlinedIcon
 
 const Header = ({ onMenuClick, isCollapsed }) => {
   return (
@@ -19,7 +20,7 @@ const Header = ({ onMenuClick, isCollapsed }) => {
       }}
     >
       <Toolbar>
-        {/* Sidebar Toggle Button */}
+        {/* Sidebar Toggle Button (MenuOutlinedIcon) */}
         <IconButton
           color="inherit"
           aria-label="toggle sidebar"
@@ -30,8 +31,17 @@ const Header = ({ onMenuClick, isCollapsed }) => {
           <MenuIcon />
         </IconButton>
 
-        {/*  header search box component */}
+        {/*  MenuOutlinedIcon for collapsing/expanding the sidebar */}
+        <IconButton
+          color="inherit"
+          aria-label="toggle sidebar collapse"
+          onClick={onMenuClick}
+          sx={{ display: { xs: "none", md: "none" } }}
+        >
+          <MenuOutlinedIcon />
+        </IconButton>
 
+        {/*  header search box component */}
         <Box sx={{ background: "white", borderRadius: "7px" }}>
           <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
           <IconButton>
@@ -42,17 +52,14 @@ const Header = ({ onMenuClick, isCollapsed }) => {
         {/* Rest of Header(bar) Icons */}
         <Box display="flex" ml="auto">
           {/*  Header Notification icon */}
-
           <IconButton>
             <NotificationsOutlinedIcon />
           </IconButton>
           {/*  Header Setting icon */}
-
           <IconButton>
             <SettingsOutlinedIcon />
           </IconButton>
           {/*  Header user icon */}
-
           <IconButton>
             <PersonOutlinedIcon />
           </IconButton>

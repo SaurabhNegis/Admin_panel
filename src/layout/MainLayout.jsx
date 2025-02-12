@@ -24,24 +24,17 @@ const MainLayout = () => {
   // Function to toggle between collapsed and expanded sidebar
   const handleSidebarToggle = () => setIsCollapsed(!isCollapsed);
 
-
   return (
-    // Box component
-    // In MUI, the Box component is a versatile wrapper that renders a simple <div> (by default) and 
-    // lets you apply styling directly through the sx prop. It serves as a fundamental building block for 
-    // layout and design by providing:
-
-    <Box sx={{ zIndex:"1000", display: "flex", position:"relative",  width: "100%", minHeight: "100vh" }}>
+    // Box component - Main layout container
+    <Box sx={{ zIndex: "1000", display: "flex", position: "relative", width: "100%", minHeight: "100vh" }}>
       
-      {/* Header Component define here for layout */}
-      
+      {/* Header Component */}
       <Header 
         onMenuClick={isMobile ? handleDrawerToggle : handleSidebarToggle} 
         isCollapsed={isCollapsed} 
         sx={{ zIndex: 1100 }} // Ensure header doesn't cover sidebar
       />
 
-{/* Drawer component is used to create a sliding panel that typically appears from the side of the screen. */}
       {/* Permanent Sidebar for Desktop */}
       <Drawer
         variant="permanent"
@@ -71,12 +64,11 @@ const MainLayout = () => {
         onClose={handleDrawerToggle}
         ModalProps={{ keepMounted: true }} // Keeps drawer mounted for better performance
         sx={{
-          display: { xs: "block", md: "none", }, // Show only on mobile
+          display: { xs: "block", md: "none" }, // Show only on mobile
           [`& .MuiDrawer-paper`]: { 
             width: drawerWidth, 
             zIndex: 1301, // Ensure sidebar is ABOVE the header
             position: "fixed",
-            // marginTop: "65px"
           },
         }}
       >
@@ -88,13 +80,13 @@ const MainLayout = () => {
         component="main"
         sx={{
           flexGrow: 1,
-        //   ml: { md: `${isCollapsed ? collapsedWidth : drawerWidth}px`, xs: 0 }, // Adjust margin only for desktop
           mt: 8, // Offset for fixed AppBar
           transition: theme.transitions.create("margin", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.standard,
           }),
           p: 3,
+          ml: { md: `${isCollapsed ? collapsedWidth : drawerWidth}px`, xs: 0 }, // Adjust margin based on collapse state
         }}
       >
         <Outlet />
