@@ -88,7 +88,7 @@ const MainLayout = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          ml: { md: `${isCollapsed ? collapsedWidth : drawerWidth}px`, xs: 0 }, // Adjust margin only for desktop
+        //   ml: { md: `${isCollapsed ? collapsedWidth : drawerWidth}px`, xs: 0 }, // Adjust margin only for desktop
           mt: 8, // Offset for fixed AppBar
           transition: theme.transitions.create("margin", {
             easing: theme.transitions.easing.sharp,
