@@ -15,7 +15,7 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
   return (
     <Box sx={{ overflow: "hidden", width: "100%" }}>
       <Sidebar collapsed={isCollapsed} style={{ height: '100vh' }}>
-        <Box sx={{ display: 'flex', justifyContent: "space-between", margin: "10px" }}>
+        <Box sx={{ display: 'flex', justifyContent: "space-between", margin: "10px", marginBottom:"50px" }}>
           {!isCollapsed && (
             <Typography variant="h6">
               Admin Panel
