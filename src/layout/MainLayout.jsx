@@ -80,13 +80,13 @@ const MainLayout = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          mt: 8, // Offset for fixed AppBar
+          mt: 7, // Offset for fixed AppBar
           transition: theme.transitions.create("margin", {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.standard,
           }),
           p: 3,
-          ml: { md: `${isCollapsed ? collapsedWidth : drawerWidth}px`, xs: 0 }, // Adjust margin based on collapse state
+        //   ml: { md: `${isCollapsed ? collapsedWidth : drawerWidth}px`, xs: 0 }, // Adjust margin based on collapse state
         }}
       >
         <Outlet />

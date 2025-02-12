@@ -5,7 +5,7 @@ const Dashboard = () => {
   return (
     <Box >
       {/* Header Section */}
-      <Typography variant="h4" className="mb-6">
+      <Typography variant="h4" sx={{ marginBottom: 2 }}>
         Dashboard
       </Typography>
 

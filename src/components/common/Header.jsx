@@ -52,15 +52,21 @@ const Header = ({ onMenuClick, isCollapsed }) => {
         {/* Rest of Header(bar) Icons */}
         <Box display="flex" ml="auto">
           {/*  Header Notification icon */}
-          <IconButton>
+          <IconButton 
+          color="inherit"
+          >
             <NotificationsOutlinedIcon />
           </IconButton>
           {/*  Header Setting icon */}
-          <IconButton>
+          <IconButton
+          color="inherit"
+          >
             <SettingsOutlinedIcon />
           </IconButton>
           {/*  Header user icon */}
-          <IconButton>
+          <IconButton
+          color="inherit"
+          >
             <PersonOutlinedIcon />
           </IconButton>
         </Box>
