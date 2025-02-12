@@ -13,8 +13,8 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
   };
 
   return (
-    <Box sx={{ overflow: "hidden", width: "100%" }}>
-      <Sidebar collapsed={isCollapsed} style={{ height: '100vh' }}>
+    <Box sx={{ overflow: "hidden",  width: "100%" }}>
+      <Sidebar collapsed={isCollapsed} style={{ height: '100vh',width: "100%" }}>
         <Box sx={{ display: 'flex', justifyContent: "space-between", margin: "10px", marginBottom:"50px" }}>
           {!isCollapsed && (
             <Typography variant="h6">
@@ -26,16 +26,17 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
           </IconButton>
         </Box>
 
-        <Menu iconShape="square"
+        <Menu iconShape="square" 
         menuItemStyles={{
             button: ({ level, active }) => {
               if (active) {
                 return {
-                  backgroundColor: '#1976d2', // Custom background color for active item
+                  backgroundColor: '#1976d2',
                   color: '#fff', // Custom text color for active item
                   '&:hover': {
-                    backgroundColor: '#1565c0', // Custom hover background color
+                    borderBottom: '#1565c0', // Custom hover background color
                   },
+                  
                 };
               }
               return {};
