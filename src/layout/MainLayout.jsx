@@ -4,29 +4,44 @@ import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
 import Header from "../components/common/Header";  
 import Sidebar from "../components/common/Sidebar";  
 
+// Define the width of the sidebar when expanded and collapsed
 const drawerWidth = 240;
 const collapsedWidth = 80; // Collapsed width for sidebar
 
 const MainLayout = () => {
+  // State to control the mobile drawer (open/close)
   const [mobileOpen, setMobileOpen] = useState(false);
+  // State to track whether the sidebar is collapsed or expanded
   const [isCollapsed, setIsCollapsed] = useState(false);
   
+  // Access the theme object from Material-UI
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Detect mobile screen
+  // Check if the screen size is below the "md" breakpoint (mobile screen)
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  // Function to toggle the mobile sidebar visibility
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+  // Function to toggle between collapsed and expanded sidebar
   const handleSidebarToggle = () => setIsCollapsed(!isCollapsed);
 
+
   return (
+    // Box component
+    // In MUI, the Box component is a versatile wrapper that renders a simple <div> (by default) and 
+    // lets you apply styling directly through the sx prop. It serves as a fundamental building block for 
+    // layout and design by providing:
+
     <Box sx={{ zIndex:"1000", display: "flex", position:"relative",  width: "100%", minHeight: "100vh" }}>
       
-      {/* Header with proper zIndex */}
+      {/* Header Component define here for layout */}
+      
       <Header 
         onMenuClick={isMobile ? handleDrawerToggle : handleSidebarToggle} 
         isCollapsed={isCollapsed} 
         sx={{ zIndex: 1100 }} // Ensure header doesn't cover sidebar
       />
 
+{/* Drawer component is used to create a sliding panel that typically appears from the side of the screen. */}
       {/* Permanent Sidebar for Desktop */}
       <Drawer
         variant="permanent"
