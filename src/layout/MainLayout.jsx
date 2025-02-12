@@ -1,77 +1,90 @@
-// src/layouts/MainLayout.jsx
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Box, Drawer, AppBar, Toolbar, IconButton, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import Header from "../common/Header";  // Import Header component
-import Sidebar from "../common/Sidebar";  // Import Sidebar component
+import { Box, Drawer, useMediaQuery, useTheme } from "@mui/material";
+import Header from "../components/common/Header";  
+import Sidebar from "../components/common/Sidebar";  
 
 const drawerWidth = 240;
+const collapsedWidth = 80; // Collapsed width for sidebar
 
 const MainLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Detect mobile screen
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+  const handleSidebarToggle = () => setIsCollapsed(!isCollapsed);
 
   return (
-    <div className="app">
-   <Header onMenuClick={handleDrawerToggle} />
-        
-        <div className="content">
+    <Box sx={{ zIndex:"1000", display: "flex", position:"relative",  width: "100%", minHeight: "100vh" }}>
+      
+      {/* Header with proper zIndex */}
+      <Header 
+        onMenuClick={isMobile ? handleDrawerToggle : handleSidebarToggle} 
+        isCollapsed={isCollapsed} 
+        sx={{ zIndex: 1100 }} // Ensure header doesn't cover sidebar
+      />
 
-
-    <Box sx={{ display: "flex" }}>
-      {/* Header */}
-   
-
-      {/* Sidebar for larger screens */}
+      {/* Permanent Sidebar for Desktop */}
       <Drawer
-  variant="permanent"
-  sx={{
-    width: drawerWidth,
-    flexShrink: 0,
-    [`& .MuiDrawer-paper`]: { 
-      width: drawerWidth, 
-      boxSizing: "border-box",
-      mt: 8 // <-- Fix: Offset to prevent overlap
-    },
-    display: { xs: "none", md: "block" },
-  }}
->
-  <Sidebar />
-</Drawer>
+        variant="permanent"
+        sx={{
+          display: { xs: "none", md: "block" }, // Hide on mobile
+          width: isCollapsed ? collapsedWidth : drawerWidth,
+          flexShrink: 0,
+          [`& .MuiDrawer-paper`]: {
+            width: isCollapsed ? collapsedWidth : drawerWidth,
+            boxSizing: "border-box",
+            position: "fixed",
+            height: "100vh",
+            transition: theme.transitions.create("width", {
+              easing: theme.transitions.easing.sharp,
+              duration: theme.transitions.duration.standard,
+            }),
+          },
+        }}
+      >
+        <Sidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+      </Drawer>
 
-
-      {/* Sidebar for mobile screens */}
+      {/* Mobile Drawer (Fix zIndex Issue) */}
       <Drawer
         variant="temporary"
         open={mobileOpen}
         onClose={handleDrawerToggle}
+        ModalProps={{ keepMounted: true }} // Keeps drawer mounted for better performance
         sx={{
-          display: { xs: "block", md: "none" },
-          [`& .MuiDrawer-paper`]: { width: drawerWidth },
+          display: { xs: "block", md: "none", }, // Show only on mobile
+          [`& .MuiDrawer-paper`]: { 
+            width: drawerWidth, 
+            zIndex: 1301, // Ensure sidebar is ABOVE the header
+            position: "fixed",
+            // marginTop: "65px"
+          },
         }}
       >
-        <Sidebar />
+        <Sidebar isCollapsed={false} />
       </Drawer>
 
-
-      {/* Main Content Area */}
+      {/* Main Content */}
       <Box
+        component="main"
         sx={{
           flexGrow: 1,
-          width: `calc(100% - ${drawerWidth}px)`,
-          minHeight: "100vh",
-          mt: 8, // Offset for the fixed AppBar
+          ml: { md: `${isCollapsed ? collapsedWidth : drawerWidth}px`, xs: 0 }, // Adjust margin only for desktop
+          mt: 8, // Offset for fixed AppBar
+          transition: theme.transitions.create("margin", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.standard,
+          }),
+          p: 3,
         }}
       >
         <Outlet />
       </Box>
     </Box>
-    </div>
-
-    </div>
-
   );
 };
 
