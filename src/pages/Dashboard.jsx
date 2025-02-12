@@ -1,17 +1,18 @@
 import React from 'react';
-import { Box, Grid, Card, CardContent, Typography, Paper } from '@mui/material';
+import { Box, Grid2, Card, CardContent, Typography, Paper } from '@mui/material'; 
 
 const Dashboard = () => {
   return (
-    <Box className="bg-gray-100 min-h-screen p-6">
-      {/* Header */}
+    <Box >
+      {/* Header Section */}
       <Typography variant="h4" className="mb-6">
         Dashboard
       </Typography>
 
-      {/* Metric Cards */}
-      <Grid container spacing={4}>
-        <Grid item xs={12} sm={6} md={4}>
+      {/* Metric Cards Section */}
+      <Grid2 container spacing={4}>
+        {/* Total Users Card */}
+        <Grid2 item xs={12} sm={6} md={4}>
           <Card className="shadow-lg">
             <CardContent>
               <Typography variant="h6" color="textSecondary">
@@ -22,9 +23,10 @@ const Dashboard = () => {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </Grid2>
 
-        <Grid item xs={12} sm={6} md={4}>
+        {/* Total Sales Card */}
+        <Grid2 item xs={12} sm={6} md={4}>
           <Card className="shadow-lg">
             <CardContent>
               <Typography variant="h6" color="textSecondary">
@@ -35,9 +37,10 @@ const Dashboard = () => {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </Grid2>
 
-        <Grid item xs={12} sm={6} md={4}>
+        {/* Pending Orders Card */}
+        <Grid2 item xs={12} sm={6} md={4}>
           <Card className="shadow-lg">
             <CardContent>
               <Typography variant="h6" color="textSecondary">
@@ -48,16 +51,16 @@ const Dashboard = () => {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
 
-      {/* Chart/Overview Section */}
+      {/* Sales Overview Section */}
       <Box mt={6}>
         <Paper className="p-6 shadow-lg">
           <Typography variant="h6" className="mb-4">
             Sales Overview
           </Typography>
-          {/* Placeholder for chart */}
+          {/* Placeholder for a future chart */}
           <Box
             className="flex items-center justify-center bg-gray-200"
             sx={{ height: 300, borderRadius: 1 }}
