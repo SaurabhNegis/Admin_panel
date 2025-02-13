@@ -11,6 +11,7 @@ import FormPage from '../pages/FormPage';
 // import NotFound from '../pages/NotFound';
 import MainLayout from '../layout/MainLayout';
 import BasicTables from '../pages/Tables/BasicTables';
+import DataTable from '../pages/Tables/DataTable';
 
 const AppRoutes = () => (
   <Routes>
@@ -33,6 +34,7 @@ const AppRoutes = () => (
 
       <Route path="formPage" element={<FormPage />} />
       <Route path="basicTables" element={<BasicTables />} />
+      <Route path="dataTable" element={<DataTable />} />
 
       
     </Route>

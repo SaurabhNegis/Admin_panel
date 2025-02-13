@@ -6,7 +6,7 @@ import { Dashboard, Settings, Logout } from '@mui/icons-material';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DynamicFormIcon from '@mui/icons-material/DynamicForm';
 import TableChartIcon from '@mui/icons-material/TableChart';
-
+import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
 const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
   const location = useLocation(); // Getting the current location for sidebar menuitem 
 
@@ -78,11 +78,18 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
           {/* Tabel */}
           <SubMenu icon={<TableChartIcon/>} 
           label="Charts">
+          {/*Basic Tabel */}
+
       <MenuItem icon={<TableChartIcon />}
             component={<Link to={"/basicTables"} />}
       >basic Table</MenuItem>
-      <MenuItem>Data Table </MenuItem>
+    {/* Data table  */}
+
+         <MenuItem icon={<PivotTableChartIcon />}
+            component={<Link to={"/dataTable"} />}
+      >Data Table </MenuItem>
     </SubMenu>
+
 
           {/* Logout MenuItem */}
           <MenuItem
