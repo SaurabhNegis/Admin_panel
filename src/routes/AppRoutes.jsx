@@ -12,6 +12,7 @@ import FormPage from '../pages/FormPage';
 import MainLayout from '../layout/MainLayout';
 import BasicTables from '../pages/Tables/BasicTables';
 import DataTable from '../pages/Tables/DataTable';
+import Buttons from '../pages/UI_Elements/Buttons';
 
 const AppRoutes = () => (
   <Routes>
@@ -30,12 +31,15 @@ const AppRoutes = () => (
       {/* Route for Settings page */}
       <Route path="settings" element={<Settings />} />
 
-      {/* Route for FormPage page */}
-
+      {/* Route for FormPage page */}  
       <Route path="formPage" element={<FormPage />} />
+
+      {/* Route for tables page */}
       <Route path="basicTables" element={<BasicTables />} />
       <Route path="dataTable" element={<DataTable />} />
 
+      {/* Route for tables page */}
+      <Route path="buttons" element={<Buttons />} />
       
     </Route>
 
