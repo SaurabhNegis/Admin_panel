@@ -15,6 +15,7 @@ import DataTable from '../pages/Tables/DataTable';
 import Buttons from '../pages/UI_Elements/Buttons';
 import TabAndAccordions from '../pages/Ui_Elements/TabAndAccordions';
 import Alerts from '../pages/Ui_Elements/Alerts';
+import Modals from '../pages/Ui_Elements/Modals';
 
 const AppRoutes = () => (
   <Routes>
@@ -49,6 +50,9 @@ const AppRoutes = () => (
 
       {/* Route for Alert page */}
       <Route path="alerts" element={<Alerts />} />
+
+       {/* Route for modals page */}
+       <Route path="modals" element={<Modals />} />
 
     </Route>
 

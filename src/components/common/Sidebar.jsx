@@ -134,6 +134,15 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
             >
               Alerts{" "}
             </MenuItem>
+
+            <MenuItem
+              icon={<ErrorIcon />}
+              component={<Link to={"/modals"} />}
+            active={location.pathname === "/modals"} // Check if the current route matches
+
+            >
+              Modals{" "}
+            </MenuItem>
           </SubMenu>
 
           {/* Logout MenuItem  navigation*/}
