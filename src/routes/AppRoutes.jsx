@@ -14,6 +14,7 @@ import BasicTables from '../pages/Tables/BasicTables';
 import DataTable from '../pages/Tables/DataTable';
 import Buttons from '../pages/UI_Elements/Buttons';
 import TabAndAccordions from '../pages/Ui_Elements/TabAndAccordions';
+import Alerts from '../pages/Ui_Elements/Alerts';
 
 const AppRoutes = () => (
   <Routes>
@@ -45,6 +46,9 @@ const AppRoutes = () => (
 
       {/* Route for tables page */}
       <Route path="tabAndAccordions" element={<TabAndAccordions />} />
+
+      {/* Route for Alert page */}
+      <Route path="alerts" element={<Alerts />} />
 
     </Route>
 
