@@ -16,6 +16,7 @@ import Buttons from '../pages/UI_Elements/Buttons';
 import TabAndAccordions from '../pages/Ui_Elements/TabAndAccordions';
 import Alerts from '../pages/Ui_Elements/Alerts';
 import Modals from '../pages/Ui_Elements/Modals';
+import Maps from '../pages/Maps/Maps';
 
 const AppRoutes = () => (
   <Routes>
@@ -53,6 +54,9 @@ const AppRoutes = () => (
 
        {/* Route for modals page */}
        <Route path="modals" element={<Modals />} />
+
+        {/* Route for Maps page */}
+        <Route path="maps" element={<Maps />} />
 
     </Route>
 
