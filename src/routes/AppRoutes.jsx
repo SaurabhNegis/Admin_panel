@@ -13,6 +13,7 @@ import MainLayout from '../layout/MainLayout';
 import BasicTables from '../pages/Tables/BasicTables';
 import DataTable from '../pages/Tables/DataTable';
 import Buttons from '../pages/UI_Elements/Buttons';
+import TabAndAccordions from '../pages/Ui_Elements/TabAndAccordions';
 
 const AppRoutes = () => (
   <Routes>
@@ -41,6 +42,10 @@ const AppRoutes = () => (
       {/* Route for tables page */}
       <Route path="buttons" element={<Buttons />} />
       
+
+      {/* Route for tables page */}
+      <Route path="tabAndAccordions" element={<TabAndAccordions />} />
+
     </Route>
 
     {/* Uncomment this to handle unknown routes with a NotFound page */}

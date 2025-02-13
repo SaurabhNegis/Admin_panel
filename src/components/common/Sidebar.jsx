@@ -116,12 +116,14 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
 
             {/* Data table  */}
 
-            {/* <MenuItem
+            <MenuItem
               icon={<PivotTableChartIcon />}
-              component={<Link to={"/dataTable"} />}
+              component={<Link to={"/tabAndAccordions"} />}
+            active={location.pathname === "/tabAndAccordions"} // Check if the current route matches
+
             >
-              Data Table{" "}
-            </MenuItem> */}
+              TabAndAccordions{" "}
+            </MenuItem>
           </SubMenu>
 
           {/* Logout MenuItem  navigation*/}
