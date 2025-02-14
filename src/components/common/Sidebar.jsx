@@ -11,6 +11,9 @@ import ErrorIcon from '@mui/icons-material/Error';
 import FunctionsIcon from '@mui/icons-material/Functions';
 import MapIcon from '@mui/icons-material/Map';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+
 const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
   const location = useLocation(); // Getting the current location for sidebar menuitem
 
@@ -19,6 +22,8 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
   };
 
   return (
+    
+
     <Box sx={{ overflow: "hidden", width: "100%" }}>
       <Sidebar
         collapsed={isCollapsed}
@@ -158,6 +163,33 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
             {!isCollapsed && "Map"}
           </MenuItem>
 
+
+          {/* Other Pages  navigation */}
+          <SubMenu icon={<TableChartIcon />} label="Other Pages">
+            {/*Basic Tabel */}
+
+            <MenuItem
+              icon={<TableChartIcon />}
+              component={<Link to={"/invoice"} />}
+            active={location.pathname === "/invoice"} // Check if the current route matches
+            >
+              Invoice
+            </MenuItem>
+            {/* Data table  */}
+
+            {/* <MenuItem
+              icon={<PivotTableChartIcon />}
+              component={<Link to={"/dataTable"} />}
+            active={location.pathname === "/dataTable"} // Check if the current route matches
+
+            >
+              Data Table{" "}
+            </MenuItem> */}
+          </SubMenu>
+
+
+
+
           {/* Logout MenuItem  navigation*/}
           <MenuItem
             icon={<Logout />}
@@ -166,9 +198,20 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
           >
             {!isCollapsed && "Logout"}
           </MenuItem>
+                   {/* Signup MenuItem  navigation*/}
+                   <MenuItem
+            icon={<HowToRegIcon />}
+            component={<Link to={"/signup"} />}
+            active={location.pathname === "/signup"} // Check if the current route matches
+          >
+            {!isCollapsed && "Logout"}
+          </MenuItem>
         </Menu>
       </Sidebar>
     </Box>
+   
+    
+  
   );
 };
 

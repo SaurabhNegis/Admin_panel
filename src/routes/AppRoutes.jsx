@@ -18,6 +18,7 @@ import Alerts from '../pages/Ui_Elements/Alerts';
 import Modals from '../pages/Ui_Elements/Modals';
 import Maps from '../pages/Maps/Maps';
 import SignUp from '../pages/loginSignupLogout/SignUp';
+import Invoice from '../pages/otherPages/Invoice';
 
 const AppRoutes = () => (
   <Routes>
@@ -59,6 +60,12 @@ const AppRoutes = () => (
 
         {/* Route for Maps page */}
         <Route path="maps" element={<Maps />} />
+
+
+        {/* other pages routes */}
+        <Route path="invoice" element={<Invoice />} />
+        
+
 
     </Route>
 

@@ -10,6 +10,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined"; // Import MenuO
 const Header = ({ onMenuClick, isCollapsed }) => {
   return (
     //   AppBar - Navigation bar component ,it serves as a container for elements of navigation
+    <div className="no-print">
     <AppBar
       position="fixed"
       sx={{
@@ -18,6 +19,7 @@ const Header = ({ onMenuClick, isCollapsed }) => {
         marginLeft: { md: `${isCollapsed ? 80 : 240}px` },
         transition: "width 0.3s ease, margin-left 0.3s ease",
       }}
+      
     >
       <Toolbar>
         {/* Sidebar Toggle Button (MenuOutlinedIcon) */}
@@ -72,6 +74,8 @@ const Header = ({ onMenuClick, isCollapsed }) => {
         </Box>
       </Toolbar>
     </AppBar>
+          
+    </div>
   );
 };
 
