@@ -49,7 +49,7 @@ const Maps = () => {
   }, [streetViewPosition]);
 
   return (
-    <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
+    <LoadScript googleMapsApiKey="AIzaSyD9GBr4eMFnz30uynthY_nvn6g6miexuco">
       <div>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}

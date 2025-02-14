@@ -5,8 +5,8 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
 import Users from '../pages/Users';
 import Settings from '../pages/Settings';
-import Login from '../pages/Login';
-import Logout from '../pages/Logout';
+import Login from '../pages/loginSignupLogout/Login';
+import Logout from '../pages/loginSignupLogout/Logout';
 import FormPage from '../pages/FormPage';
 // import NotFound from '../pages/NotFound';
 import MainLayout from '../layout/MainLayout';
@@ -17,12 +17,14 @@ import TabAndAccordions from '../pages/Ui_Elements/TabAndAccordions';
 import Alerts from '../pages/Ui_Elements/Alerts';
 import Modals from '../pages/Ui_Elements/Modals';
 import Maps from '../pages/Maps/Maps';
+import SignUp from '../pages/loginSignupLogout/SignUp';
 
 const AppRoutes = () => (
   <Routes>
     {/* Route for Login Page - accessible without authentication */}
     <Route path="/login" element={<Login />} />
     <Route path="/logout" element={<Logout />} />
+    <Route path="/signup" element={<SignUp />} />
 
     {/* Protected routes wrapped inside MainLayout */}
     <Route path="/" element={<MainLayout />}>

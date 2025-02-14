@@ -8,7 +8,9 @@ import DynamicFormIcon from "@mui/icons-material/DynamicForm";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import PivotTableChartIcon from "@mui/icons-material/PivotTableChart";
 import ErrorIcon from '@mui/icons-material/Error';
+import FunctionsIcon from '@mui/icons-material/Functions';
 import MapIcon from '@mui/icons-material/Map';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
   const location = useLocation(); // Getting the current location for sidebar menuitem
 
@@ -105,7 +107,7 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
           </SubMenu>
 
           {/* UI Elements navigation */}
-          <SubMenu icon={<TableChartIcon />} label="UI Elements">
+          <SubMenu icon={<EditNoteIcon />} label="UI Elements">
             {/*Buttons */}
             <MenuItem
               icon={<TableChartIcon />}
@@ -128,7 +130,7 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
             </MenuItem>
 
             <MenuItem
-              icon={<ErrorIcon />}
+              icon={<FunctionsIcon />}
               component={<Link to={"/alerts"} />}
             active={location.pathname === "/alerts"} // Check if the current route matches
 
