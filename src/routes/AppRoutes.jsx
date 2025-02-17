@@ -19,6 +19,11 @@ import Modals from '../pages/Ui_Elements/Modals';
 import Maps from '../pages/Maps/Maps';
 import SignUp from '../pages/loginSignupLogout/SignUp';
 import Invoice from '../pages/otherPages/Invoice';
+import RecoverPassword from '../pages/otherPages/RecoverPassword';
+import LockScreen from '../pages/otherPages/LockScreen';
+import BlankPage from '../pages/otherPages/BlankPage';
+import NotFoundPage from '../pages/otherPages/404Page';
+import DataTableAdd from '../pages/Tables/dataTableAdd';
 
 const AppRoutes = () => (
   <Routes>
@@ -44,6 +49,7 @@ const AppRoutes = () => (
       {/* Route for tables page */}
       <Route path="basicTables" element={<BasicTables />} />
       <Route path="dataTable" element={<DataTable />} />
+      <Route path="dataTableAdd" element={<DataTableAdd />} />
 
       {/* Route for tables page */}
       <Route path="buttons" element={<Buttons />} />
@@ -62,10 +68,17 @@ const AppRoutes = () => (
         <Route path="maps" element={<Maps />} />
 
 
+        {/* other pages routes */}   
+          {/* other pages routes */}
+              <Route path="invoice" element={<Invoice />} />
+          {/* other pages routes */}
+              <Route path="recoverPassword" element={<RecoverPassword />} />
         {/* other pages routes */}
-        <Route path="invoice" element={<Invoice />} />
-        
-
+        <Route path="lockScreen" element={<LockScreen />} />
+        {/* other pages routes */}
+        <Route path="blankPage" element={<BlankPage />} />
+        {/* other pages routes */}
+        <Route path="notFoundPage" element={<NotFoundPage />} />
 
     </Route>
 
