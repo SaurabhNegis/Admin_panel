@@ -86,6 +86,8 @@ const MainLayout = () => {
             duration: theme.transitions.duration.standard,
           }),
           p: 3,
+          overflow: "auto",  // Allows scroll if the content overflows
+
         //   ml: { md: `${isCollapsed ? collapsedWidth : drawerWidth}px`, xs: 0 }, // Adjust margin based on collapse state
         }}
       >
