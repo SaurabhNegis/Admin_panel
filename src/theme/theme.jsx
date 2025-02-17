@@ -229,7 +229,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: 'Lato, sans-serif',
   },
   // You can add component-specific overrides here
 });
