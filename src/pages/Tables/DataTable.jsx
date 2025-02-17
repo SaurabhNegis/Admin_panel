@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Box, Typography, TextField, Toolbar, InputAdornment } from "@mui/material";
+import { Box, Typography, TextField, Toolbar } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 // Columns definition for the DataGrid
 const columns = [
-  { field: "name", headerName: "Name", flex: 1, minWidth: 150 },
-  { field: "position", headerName: "Position", flex: 1, minWidth: 150 },
-  { field: "office", headerName: "Office", flex: 1, minWidth: 150 },
-  { field: "age", headerName: "Age", type: "number", flex: 0.5, minWidth: 100 },
-  { field: "startDate", headerName: "Start Date", flex: 1, minWidth: 150 },
-  { field: "salary", headerName: "Salary", flex: 1, minWidth: 150 },
-];
+    { field: "name", headerName: "Name", flex: 1, minWidth: 150, headerClassName: 'bold-header', headerAlign: 'left', align: 'left' },
+    { field: "position", headerName: "Position", flex: 1, minWidth: 150, headerClassName: 'bold-header', headerAlign: 'left', align: 'left' },
+    { field: "office", headerName: "Office", flex: 1, minWidth: 150, headerClassName: 'bold-header', headerAlign: 'left', align: 'left' },
+    { field: "age", headerName: "Age", type: "number", flex: 0.5, minWidth: 100, headerClassName: 'bold-header', headerAlign: 'left', align: 'left' },
+    { field: "startDate", headerName: "Start Date", flex: 1, minWidth: 150, headerClassName: 'bold-header', headerAlign: 'left', align: 'left' },
+    { field: "salary", headerName: "Salary", flex: 1, minWidth: 150, headerClassName: 'bold-header', headerAlign: 'left', align: 'left' },
+  ];
+  
 
 // Sample data rows for the DataGrid
 const rows = [
@@ -26,7 +27,7 @@ const rows = [
 ];
 
 const DataTable = () => {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   const handleSearch = (event) => {
     setSearchText(event.target.value);
@@ -34,45 +35,70 @@ const DataTable = () => {
 
   // Filter rows based on search text
   const filteredRows = rows.filter((row) =>
-    Object.values(row).some((value) =>
-      value.toString().toLowerCase().includes(searchText.toLowerCase())
+    Object.values(row).some(
+      (value) =>
+        value.toString().toLowerCase().includes(searchText.toLowerCase())
     )
   );
 
   return (
-    <Box sx={{ height: "auto", width: "100%", boxShadow: 3, borderRadius: 2, bgcolor: "white", p: 2 }}>
-      <Typography variant="h5" sx={{ mb: 2, fontWeight: "bold" }}>
+    <Box
+      sx={{
+        width: "100%",
+        maxWidth: "900px",
+        mx: "auto",
+        p: { xs: 1, sm: 2, md: 3 },
+        bgcolor: "white",
+        borderRadius: 2,
+        boxShadow: 3,
+      }}
+    >
+      <Typography variant="h5" sx={{ mb: 2, fontWeight: "bold", textAlign: "center" }}>
         Employee DataTable
       </Typography>
 
       {/* Search Bar */}
-      <Toolbar sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <TextField
-          variant="outlined"
-          label="Search"
-          value={searchText}
-          onChange={handleSearch}
-          fullWidth
-          sx={{ maxWidth: 300,
-           }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start"></InputAdornment>
-            ),
-          }}
-        />
-      </Toolbar>
+      <Toolbar sx={{ display: "flex", }}>
+  <TextField
+    variant="outlined"
+    label="Search"
+    value={searchText}
+    onChange={handleSearch}
+    sx={{
+      "& .MuiOutlinedInput-root": {
+        height: "45px", // Controls input height
+      },
+      "& .MuiInputBase-input": {
+        padding: "8px", // Adjust inner text padding
+      },
+    }}
+  />
+</Toolbar>
+
 
       {/* DataGrid */}
+      <Box sx={{ width: "100%", padding:0, margin:0, overflowX: "auto" }}>
       <DataGrid
-        rows={filteredRows}
-        columns={columns}
-        pageSize={8}
-        rowsPerPageOptions={[5, 10, 15]}
-        initialState={{ pagination: { paginationModel: { pageSize: 8 } } }}
-        disableRowSelectionOnClick
-        sx={{ fontSize: 14, marginTop: 2 }}
-      />
+  rows={filteredRows}
+  columns={columns}
+  pageSize={8}
+  rowsPerPageOptions={[5, 10, 15]}
+  initialState={{ pagination: { paginationModel: { pageSize: 8 } } }}
+  disableRowSelectionOnClick
+  sx={{
+    fontSize: 14,
+    marginTop: 2,
+    '& .MuiDataGrid-columnHeaderTitle': {
+      fontWeight: 'bold',
+      textAlign: 'left',
+    },
+    '& .MuiDataGrid-cell': {
+      textAlign: 'left',
+    },
+  }}
+/>
+
+      </Box>
     </Box>
   );
 };
