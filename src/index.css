@@ -7,7 +7,9 @@ body,
 .content {
   height: 100%;
   width: 100%;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: "Lato", sans-serif;
+  background-color: #F5F7FA;
+
 }
 
 .app {
@@ -32,4 +34,8 @@ body,
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.bold-header .MuiDataGrid-columnHeaderTitle {
+  font-weight: bold;
 }
