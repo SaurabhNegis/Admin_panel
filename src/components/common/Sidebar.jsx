@@ -1,217 +1,128 @@
 import React from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { Link, useLocation } from "react-router-dom";
 import { Box, Typography, IconButton } from "@mui/material";
 import { Dashboard, Settings, Logout } from "@mui/icons-material";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DynamicFormIcon from "@mui/icons-material/DynamicForm";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import PivotTableChartIcon from "@mui/icons-material/PivotTableChart";
-import ErrorIcon from '@mui/icons-material/Error';
-import FunctionsIcon from '@mui/icons-material/Functions';
-import MapIcon from '@mui/icons-material/Map';
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import ReceiptIcon from '@mui/icons-material/Receipt';
+import ErrorIcon from "@mui/icons-material/Error";
+import FunctionsIcon from "@mui/icons-material/Functions";
+import MapIcon from "@mui/icons-material/Map";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
+import ReceiptIcon from "@mui/icons-material/Receipt";
+import WebIcon from '@mui/icons-material/Web';
+import LockIcon from '@mui/icons-material/Lock';
+import PasswordIcon from '@mui/icons-material/Password';
+// Global icon styles
+const iconStyle = { color: "#C5C5CF" };
 
 const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
-  const location = useLocation(); // Getting the current location for sidebar menuitem
+  const location = useLocation();
 
   const handleToggle = () => {
     setIsCollapsed(!isCollapsed);
   };
 
   return (
-    
-
     <Box sx={{ overflow: "hidden", width: "100%" }}>
-      <Sidebar
-        collapsed={isCollapsed}
-        style={{ height: "100vh", width: "100%" }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            margin: "10px",
-            marginBottom: "50px",
-          }}
-        >
+      <Sidebar collapsed={isCollapsed} style={{ height: "100vh", width: "100%" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", margin: "10px", marginBottom: "50px" }}>
           {!isCollapsed && <Typography variant="h6">Admin Panel</Typography>}
           <IconButton onClick={handleToggle}>
-            <MenuOutlinedIcon />
+            <MenuOutlinedIcon sx={iconStyle} />
           </IconButton>
         </Box>
 
         <Menu
           iconShape="square"
           menuItemStyles={{
-            button: ({ level, active }) => {
-              if (active) {
-                return {
-                  backgroundColor: "#1976d2",
-                  color: "#fff", // Custom text color for active item
-                  "&:hover": {
-                    backgroundColor: "#1976d2", // Custom hover background color
-                  },
-                };
-              }
-              return {};
-            },
+            button: ({ active }) => ({
+              backgroundColor: active ? "#1976d2" : "transparent",
+              color:"#232323",
+              "&:hover": {
+                backgroundColor: "#1976d2",
+                color: "#fff",
+              },
+            }),
           }}
         >
-          {/* Dashboard MenuItem  navigation*/}
-          <MenuItem
-            icon={<Dashboard />}
-            component={<Link to={"/"} />}
-            active={location.pathname === "/"} // Check if the current route matches
-          >
+          <MenuItem icon={<Dashboard sx={iconStyle} />} component={<Link to={"/"} />} active={location.pathname === "/"}>
             {!isCollapsed && "Dashboard"}
           </MenuItem>
 
-          {/* Settings MenuItem navigation */}
-          <MenuItem
-            icon={<Settings />}
-            component={<Link to={"/settings"} />}
-            active={location.pathname === "/settings"} // Check if the current route matches
-          >
+          <MenuItem icon={<Settings sx={iconStyle} />} component={<Link to={"/settings"} />} active={location.pathname === "/settings"}>
             {!isCollapsed && "Settings"}
           </MenuItem>
 
-          {/* formPage MenuItem  navigation*/}
-          <MenuItem
-            icon={<DynamicFormIcon />}
-            component={<Link to={"/formPage"} />}
-            active={location.pathname === "/formPage"} // Check if the current route matches
-          >
+          <MenuItem icon={<DynamicFormIcon sx={iconStyle} />} component={<Link to={"/formPage"} />} active={location.pathname === "/formPage"}>
             {!isCollapsed && "Form"}
           </MenuItem>
 
-          {/* Tabel navigation */}
-          <SubMenu icon={<TableChartIcon />} label="Tables">
-            {/*Basic Tabel */}
-
-            <MenuItem
-              icon={<TableChartIcon />}
-              component={<Link to={"/basicTables"} />}
-            active={location.pathname === "/basicTables"} // Check if the current route matches
-
-            >
-              basic Table
+          <SubMenu icon={<TableChartIcon sx={iconStyle} />} label="Tables">
+            <MenuItem icon={<TableChartIcon sx={iconStyle} />} component={<Link to={"/basicTables"} />} active={location.pathname === "/basicTables"}>
+              Basic Table
             </MenuItem>
-            {/* Data table  */}
 
-            <MenuItem
-              icon={<PivotTableChartIcon />}
-              component={<Link to={"/dataTable"} />}
-            active={location.pathname === "/dataTable"} // Check if the current route matches
-
-            >
-              Data Table{" "}
+            <MenuItem icon={<PivotTableChartIcon sx={iconStyle} />} component={<Link to={"/dataTable"} />} active={location.pathname === "/dataTable"}>
+              Data Table
             </MenuItem>
           </SubMenu>
 
-          {/* UI Elements navigation */}
-          <SubMenu icon={<EditNoteIcon />} label="UI Elements">
-            {/*Buttons */}
-            <MenuItem
-              icon={<TableChartIcon />}
-              component={<Link to={"/buttons"} />}
-            active={location.pathname === "/buttons"} // Check if the current route matches
-
-            >
+          <SubMenu icon={<EditNoteIcon sx={iconStyle} />} label="UI Elements">
+            <MenuItem icon={<TableChartIcon sx={iconStyle} />} component={<Link to={"/buttons"} />} active={location.pathname === "/buttons"}>
               Buttons
             </MenuItem>
 
-            {/* Data table  */}
-
-            <MenuItem
-              icon={<PivotTableChartIcon />}
-              component={<Link to={"/tabAndAccordions"} />}
-            active={location.pathname === "/tabAndAccordions"} // Check if the current route matches
-
-            >
-              TabAndAccordions{" "}
+            <MenuItem icon={<PivotTableChartIcon sx={iconStyle} />} component={<Link to={"/tabAndAccordions"} />} active={location.pathname === "/tabAndAccordions"}>
+              Tab & Accordions
             </MenuItem>
 
-            <MenuItem
-              icon={<FunctionsIcon />}
-              component={<Link to={"/alerts"} />}
-            active={location.pathname === "/alerts"} // Check if the current route matches
-
-            >
-              Alerts{" "}
+            <MenuItem icon={<FunctionsIcon sx={iconStyle} />} component={<Link to={"/alerts"} />} active={location.pathname === "/alerts"}>
+              Alerts
             </MenuItem>
 
-            <MenuItem
-              icon={<ErrorIcon />}
-              component={<Link to={"/modals"} />}
-            active={location.pathname === "/modals"} // Check if the current route matches
-
-            >
-              Modals{" "}
+            <MenuItem icon={<ErrorIcon sx={iconStyle} />} component={<Link to={"/modals"} />} active={location.pathname === "/modals"}>
+              Modals
             </MenuItem>
           </SubMenu>
 
-
-          {/* Maps */}
-          <MenuItem
-            icon={<MapIcon />}
-            component={<Link to={"/maps"} />}
-            active={location.pathname === "/maps"} // Check if the current route matches
-          >
+          <MenuItem icon={<MapIcon sx={iconStyle} />} component={<Link to={"/maps"} />} active={location.pathname === "/maps"}>
             {!isCollapsed && "Map"}
           </MenuItem>
 
-
-          {/* Other Pages  navigation */}
-          <SubMenu icon={<TableChartIcon />} label="Other Pages">
-            {/*Basic Tabel */}
-
-            <MenuItem
-              icon={<TableChartIcon />}
-              component={<Link to={"/invoice"} />}
-            active={location.pathname === "/invoice"} // Check if the current route matches
-            >
+          <SubMenu icon={<TableChartIcon sx={iconStyle} />} label="Other Pages">
+          <MenuItem icon={<ReceiptIcon sx={iconStyle} />} component={<Link to={"/invoice"} />} active={location.pathname === "/invoice"}>
               Invoice
             </MenuItem>
-            {/* Data table  */}
+            <MenuItem icon={<ReceiptIcon sx={iconStyle} />} component={<Link to={"/notFoundPage"} />} active={location.pathname === "/notFoundPage"}>
+              404 page
+            </MenuItem>
+            <MenuItem icon={<WebIcon sx={iconStyle} />} component={<Link to={"/blankPage"} />} active={location.pathname === "/blankPage"}>
+            BlankPage
+            </MenuItem>
+            <MenuItem icon={<LockIcon sx={iconStyle} />} component={<Link to={"/lockScreen"} />} active={location.pathname === "/lockScreen"}>
+            LockScreen
+            </MenuItem>
+            <MenuItem icon={<PasswordIcon sx={iconStyle} />} component={<Link to={"/recoverPassword"} />} active={location.pathname === "/recoverPassword"}>
+            RecoverPassword
+            </MenuItem>
 
-            {/* <MenuItem
-              icon={<PivotTableChartIcon />}
-              component={<Link to={"/dataTable"} />}
-            active={location.pathname === "/dataTable"} // Check if the current route matches
 
-            >
-              Data Table{" "}
-            </MenuItem> */}
           </SubMenu>
 
-
-
-
-          {/* Logout MenuItem  navigation*/}
-          <MenuItem
-            icon={<Logout />}
-            component={<Link to={"/logout"} />}
-            active={location.pathname === "/logout"} // Check if the current route matches
-          >
+          <MenuItem icon={<Logout sx={iconStyle} />} component={<Link to={"/logout"} />} active={location.pathname === "/logout"}>
             {!isCollapsed && "Logout"}
           </MenuItem>
-                   {/* Signup MenuItem  navigation*/}
-                   <MenuItem
-            icon={<HowToRegIcon />}
-            component={<Link to={"/signup"} />}
-            active={location.pathname === "/signup"} // Check if the current route matches
-          >
-            {!isCollapsed && "Logout"}
+
+          <MenuItem icon={<HowToRegIcon sx={iconStyle} />} component={<Link to={"/signup"} />} active={location.pathname === "/signup"}>
+            {!isCollapsed && "Sign Up"}
           </MenuItem>
         </Menu>
       </Sidebar>
     </Box>
-   
-    
-  
   );
 };
 
