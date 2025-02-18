@@ -44,22 +44,35 @@ const DataTable = () => {
 
   return (
     <Box sx={{ width: "100%", padding: 3 }}>
-      <Button variant="contained" startIcon={<AddIcon />} onClick={handleOpen}>
-        Add New Data
-      </Button>
+      <Box sx={{ p: 1, boxShadow: 3, borderRadius: 2, bgcolor: "white" }}>
+            <Typography variant="h5" sx={{ mb: 2, fontWeight: "bold", textAlign: "center" }}>
+                Create DataTable 
+              </Typography>
+        
+        <Button variant="contained" startIcon={<AddIcon />} onClick={handleOpen}>
+          Add New Data
+        </Button>
 
-      {/* Scrollable Container for DataGrid */}
-      <Box
-        sx={{
-          mt: 2,
-          backgroundColor: "white",
-          height: 400,
-          width: "100%",
-          overflowX: "auto", // Enable horizontal scrolling only for the table
-        }}
-      >
-        <Box sx={{ minWidth: 750 }}> {/* Ensure the DataGrid is wider than the screen on mobile */}
-          <DataGrid rows={rows} columns={columns} pageSize={5} autoHeight />
+        {/* Scrollable Container for DataGrid */}
+        <Box
+          sx={{
+            mt: 2,
+            backgroundColor: "white",
+            width: "100%",
+            overflowX: "auto", // Enable horizontal scrolling only for the table
+          }}
+        >
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            autoHeight
+            sx={{
+              "& .MuiDataGrid-row": {
+                borderBottom: "1px solid rgba(224, 224, 224, 1)", // Light gray border between rows
+              },
+            }}
+          />
         </Box>
       </Box>
 
