@@ -24,6 +24,7 @@ import LockScreen from '../pages/otherPages/LockScreen';
 import BlankPage from '../pages/otherPages/BlankPage';
 import NotFoundPage from '../pages/otherPages/404Page';
 import DataTableAdd from '../pages/Tables/dataTableAdd';
+import NotFound from '../pages/NotFound';
 
 const AppRoutes = () => (
   <Routes>
@@ -83,7 +84,7 @@ const AppRoutes = () => (
     </Route>
 
     {/* Uncomment this to handle unknown routes with a NotFound page */}
-    {/* <Route path="*" element={<NotFound />} /> */}
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );
 
