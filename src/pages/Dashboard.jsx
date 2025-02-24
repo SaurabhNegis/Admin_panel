@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Card, CardContent, Typography,useMediaQuery } from "@mui/material";
+import { Box, Card, CardContent, Typography, useMediaQuery } from "@mui/material";
 import { PieChart } from "@mui/x-charts/PieChart";
+import { LineChart } from "@mui/x-charts/LineChart";
 
 const stats = [
   {
@@ -31,21 +32,26 @@ const data = [
   { id: 2, value: 20, label: "Category C" },
   { id: 3, value: 10, label: "Category D" },
 ];
+
 const Dashboard = () => {
   const isMobile = useMediaQuery("(max-width:600px)"); // Detect mobile screens
 
   return (
     <Box sx={{ flexGrow: 1, p: { xs: 2, md: 3 } }}>
-       <Typography variant="h4" gutterBottom sx={{
-     marginBottom: 5, 
-     borderBottom: '2px solid', 
-     borderColor: 'primary.main', 
-     paddingBottom: 1
-   }}>
-         Dashboard
-       </Typography>
+      <Typography
+        variant="h4"
+        gutterBottom
+        sx={{
+          marginBottom: 5,
+          borderBottom: "2px solid",
+          borderColor: "primary.main",
+          paddingBottom: 1,
+        }}
+      >
+        Dashboard
+      </Typography>
 
-      {/* Replaced Grid with Box (CSS Grid) for better performance */}
+      {/* Cards Grid Layout */}
       <Box
         sx={{
           display: "grid",
@@ -67,7 +73,6 @@ const Dashboard = () => {
               justifyContent: "center",
             }}
           >
-            {/* Title Section with Background Color */}
             <Typography
               backgroundColor="primary.main"
               variant="h6"
@@ -104,31 +109,57 @@ const Dashboard = () => {
         ))}
       </Box>
 
+      {/* Charts Grid Layout */}
+      <Typography variant="h4" sx={{ marginTop: "48px" }} gutterBottom>
+        Sales & Performance
+      </Typography>
 
-
-      <Box>
-        <Typography variant="h4"  sx={{marginTop:"48px"}} gutterBottom>
-          Sales Distribution
-        </Typography>
-        <Box sx={{
-          width: "100%",
-          maxWidth: isMobile ? "100vw" : "400px", // Full width on mobile
-          overflowX: isMobile ? "auto" : "visible", // Scroll only on mobile
-          display: "flex",
-          justifyContent: "center",
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", // Side by side on desktop, stacked on mobile
+          gap: 3,
+          marginTop: 2,
         }}
->
+      >
+        {/* Pie Chart */}
+        <Box
+          sx={{
+            width: "100%",
+            overflowX: isMobile ? "auto" : "visible",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <PieChart
+            series={[{ data, innerRadius: 20, outerRadius: 100 }]}
+            width={isMobile ? 350 : 500}
+            height={300}
+          />
+        </Box>
 
-        <PieChart
-          series={[{ data, innerRadius: 20, outerRadius: 100 }]}
-          width={500}
-          height={300}
-        />
+        {/* Line Chart */}
+        <Box
+          sx={{
+            width: "100%",
+            overflowX: isMobile ? "auto" : "visible",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <LineChart
+            xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+            series={[
+              {
+                data: [2, 5.5, 2, 8.5, 1.5, 5],
+              },
+            ]}
+            width={isMobile ? 350 : 500}
+            height={300}
+          />
         </Box>
       </Box>
     </Box>
-
-    
   );
 };
 

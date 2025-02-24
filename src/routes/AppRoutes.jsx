@@ -25,6 +25,7 @@ import BlankPage from '../pages/otherPages/BlankPage';
 import NotFoundPage from '../pages/otherPages/404Page';
 import DataTableAdd from '../pages/Tables/dataTableAdd';
 import NotFound from '../pages/NotFound';
+import InvoicePrint from '../pages/InvoicePrint';
 
 const AppRoutes = () => (
   <Routes>
@@ -32,6 +33,8 @@ const AppRoutes = () => (
     <Route path="/login" element={<Login />} />
     <Route path="/logout" element={<Logout />} />
     <Route path="/signup" element={<SignUp />} />
+    <Route path="/invoicePrint" element={<InvoicePrint />} />
+
 
     {/* Protected routes wrapped inside MainLayout */}
     <Route path="/" element={<MainLayout />}>

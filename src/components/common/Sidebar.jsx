@@ -65,9 +65,9 @@ const Sidebars = ({ isCollapsed, setIsCollapsed }) => {
             {!isCollapsed && "Dashboard"}
           </MenuItem>
 
-          <MenuItem icon={<Settings sx={iconStyle} />} component={<Link to={"/settings"} />} active={location.pathname === "/settings"}>
+          {/* <MenuItem icon={<Settings sx={iconStyle} />} component={<Link to={"/settings"} />} active={location.pathname === "/settings"}>
             {!isCollapsed && "Settings"}
-          </MenuItem>
+          </MenuItem> */}
 
           <MenuItem icon={<DynamicFormIcon sx={iconStyle} />} component={<Link to={"/formPage"} />} active={location.pathname === "/formPage"}>
             {!isCollapsed && "Form"}
